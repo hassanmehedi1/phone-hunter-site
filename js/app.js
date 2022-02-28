@@ -1,15 +1,27 @@
 // error message 
 let errorMsg = document.getElementById('error-message').style.display = 'none';
 
+// Spinner 
+const toggleSpinner = displayStyle => {
+   document.getElementById('spinner').style.visibility = displayStyle;
+}
+const toggleSearchResult = displayStyle => {
+   document.getElementById('search-result').style.visibility = displayStyle;
+}
+
 const searchPhone = () => {
    const searchField = document.getElementById('search-field');
    const searchText = searchField.value ;
+
+   toggleSpinner('visible');
+   toggleSearchResult('hidden');
 
    // Clear Data 
    searchField.value = '';
    document.getElementById('error-message').style.display = 'none'
    if (searchText == '') {
         document.getElementById('error-message').style.display = 'block';
+        toggleSpinner('hidden');
     }
     else{
       // Load Data
@@ -29,6 +41,7 @@ const displaySearchResult = phones => {
     document.getElementById('error-message').style.display = 'none'
    if (!phones.length) {
       document.getElementById('error-message').style.display = 'block';
+      toggleSpinner('hidden');
    }
     else{
        phones.slice(0, 20).forEach(phone => {
@@ -47,6 +60,8 @@ const displaySearchResult = phones => {
       `;
       searchResult.appendChild(div);
     })
+      toggleSpinner('hidden');
+      toggleSearchResult('visible');
     }
 };
 
@@ -77,11 +92,11 @@ const displayPhoneDetail = phone => {
         <p class="card-text text-secondary fw-bold">Chip-Set: ${phone.mainFeatures.sensors}</p>
 
         <p class="card-text fw-bolder text-warning fs-4">Others:- </p>
-        <p class="card-text text-secondary fw-bold">Bluetooth: ${phone.others.Bluetooth}</p>
-        <p class="card-text text-secondary fw-bold">GPS: ${phone.others.GPS}</p>
-        <p class="card-text text-secondary fw-bold">NFC: ${phone.others.NFC}</p>
-        <p class="card-text text-secondary fw-bold">Radio: ${phone.others.Radio}</p>
-        <p class="card-text text-secondary fw-bold">USB: ${phone.others.USB}</p>
+        <p class="card-text text-secondary fw-bold ">Bluetooth: ${phone.others?.Bluetooth ? phone.others?.Bluetooth: '<span class="text-danger">Information Not Available</span>'}</p>
+        <p class="card-text text-secondary fw-bold">GPS: ${phone.others?.GPS ? phone.others?.GPS: '<span class="text-danger">Information Not Available</span>'}</p>
+        <p class="card-text text-secondary fw-bold">NFC: ${phone.others?.NFC ? phone.others?.NFC: '<span class="text-danger">Information Not Available</span>'}</p>
+        <p class="card-text text-secondary fw-bold">Radio: ${phone.others?.Radio ? phone.others?.Radio: '<span class="text-danger">Information Not Available</span>'}</p>
+        <p class="card-text text-secondary fw-bold">USB: ${phone.others?.USB ? phone.others?.USB: '<span class="text-danger">Information Not Available</span>'}</p>
     </div>
    `;
    phoneDetails.appendChild(div);
