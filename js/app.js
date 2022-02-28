@@ -1,23 +1,37 @@
+// error message 
+let errorMsg = document.getElementById('error-message').style.display = 'none';
+
 const searchPhone = () => {
    const searchField = document.getElementById('search-field');
    const searchText = searchField.value ;
 
    // Clear Data 
    searchField.value = '';
-
-   // Load Data
+   document.getElementById('error-message').style.display = 'none'
+   if (searchText == '') {
+        document.getElementById('error-message').style.display = 'block';
+    }
+    else{
+      // Load Data
    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
    fetch(url)
    .then(res => res.json())
    .then(data => displaySearchResult(data.data))
+    }
 
 }
+
 
 // Display Search Result
 const displaySearchResult = phones => {
    const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
-    phones.forEach(phone => {
+    document.getElementById('error-message').style.display = 'none'
+   if (!phones.length) {
+      document.getElementById('error-message').style.display = 'block';
+   }
+    else{
+       phones.forEach(phone => {
       // console.log(phone);
       const div = document.createElement('div');
       div.classList.add('col');
@@ -33,6 +47,7 @@ const displaySearchResult = phones => {
       `;
       searchResult.appendChild(div);
     })
+    }
 };
 
 // Single Phone Details 
@@ -51,9 +66,9 @@ const displayPhoneDetail = phone => {
    div.innerHTML = `
    <img src="${phone.image}" class="card-img-top w-50" alt="...">
     <div class="card-body">
-        <h5 class="card-title">${phone.name}</h5>
+        <h5 class="card-title fs-2">${phone.name}</h5>
         <p class="card-text">${phone.releaseDate ? phone.releaseDate: 'No Release Date Found'}</p>
-        <p class="card-text fw-bolder text-success fs-3">Main-Features:- </p>
+        <p class="card-text fw-bolder text-success fs-4">Main-Features:- </p>
         <p class="card-text text-secondary fw-bold">Chip-Set: ${phone.mainFeatures.chipSet}</p>
         <p class="card-text text-secondary fw-bold">Display-Size: ${phone.mainFeatures.displaySize}</p>
         <p class="card-text text-secondary fw-bold">Memory: ${phone.mainFeatures.memory}</p>
@@ -61,3 +76,4 @@ const displayPhoneDetail = phone => {
    `;
    phoneDetails.appendChild(div);
 }
+
