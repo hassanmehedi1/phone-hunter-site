@@ -31,8 +31,8 @@ const displaySearchResult = phones => {
       document.getElementById('error-message').style.display = 'block';
    }
     else{
-       phones.forEach(phone => {
-      // console.log(phone);
+       phones.slice(0, 20).forEach(phone => {
+      console.log(phone);
       const div = document.createElement('div');
       div.classList.add('col');
       div.innerHTML = `
@@ -64,7 +64,7 @@ const displayPhoneDetail = phone => {
    const div = document.createElement('div');
    div.classList.add('card');
    div.innerHTML = `
-   <img src="${phone.image}" class="card-img-top w-50" alt="...">
+   <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
     <div class="card-body">
         <h5 class="card-title fs-2">${phone.name}</h5>
         <p class="card-text">${phone.releaseDate ? phone.releaseDate: 'No Release Date Found'}</p>
@@ -72,6 +72,16 @@ const displayPhoneDetail = phone => {
         <p class="card-text text-secondary fw-bold">Chip-Set: ${phone.mainFeatures.chipSet}</p>
         <p class="card-text text-secondary fw-bold">Display-Size: ${phone.mainFeatures.displaySize}</p>
         <p class="card-text text-secondary fw-bold">Memory: ${phone.mainFeatures.memory}</p>
+
+        <p class="card-text fw-bolder text-info fs-4">Sensors:- </p>
+        <p class="card-text text-secondary fw-bold">Chip-Set: ${phone.mainFeatures.sensors}</p>
+
+        <p class="card-text fw-bolder text-warning fs-4">Others:- </p>
+        <p class="card-text text-secondary fw-bold">Bluetooth: ${phone.others.Bluetooth}</p>
+        <p class="card-text text-secondary fw-bold">GPS: ${phone.others.GPS}</p>
+        <p class="card-text text-secondary fw-bold">NFC: ${phone.others.NFC}</p>
+        <p class="card-text text-secondary fw-bold">Radio: ${phone.others.Radio}</p>
+        <p class="card-text text-secondary fw-bold">USB: ${phone.others.USB}</p>
     </div>
    `;
    phoneDetails.appendChild(div);
