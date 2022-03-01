@@ -38,6 +38,8 @@ const searchPhone = () => {
 const displaySearchResult = phones => {
    const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
     document.getElementById('error-message').style.display = 'none'
    if (!phones.length) {
       document.getElementById('error-message').style.display = 'block';
@@ -75,7 +77,6 @@ const loadPhoneDetail = id => {
 
 const displayPhoneDetail = phone => {
    const phoneDetails = document.getElementById('phone-details');
-   console.log(phone);
    const div = document.createElement('div');
    div.classList.add('card');
    div.innerHTML = `
@@ -101,4 +102,3 @@ const displayPhoneDetail = phone => {
    `;
    phoneDetails.appendChild(div);
 }
-
