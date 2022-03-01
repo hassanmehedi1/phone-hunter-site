@@ -49,8 +49,8 @@ const displaySearchResult = phones => {
       const div = document.createElement('div');
       div.classList.add('col');
       div.innerHTML = `
-      <div class="card h-100">
-            <img src="${phone.image}" class="card-img-top w-60" alt="...">
+      <div class="card w-100 p-0 h-100">
+            <img src="${phone.image}" class="card-img-top w-75 mx-auto" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${phone.phone_name}</h5>
                 <p class="card-text">${phone.brand}</p>
@@ -82,14 +82,14 @@ const displayPhoneDetail = phone => {
    <img src="${phone.image}" class="card-img-top w-50 mx-auto" alt="...">
     <div class="card-body">
         <h5 class="card-title fs-2">${phone.name}</h5>
-        <p class="card-text">${phone.releaseDate ? phone.releaseDate: 'No Release Date Found'}</p>
+        <p class="card-text">${phone.releaseDate ? phone.releaseDate: '<span class="text-danger fw-bold">No Release Date Found</span>'}</p>
         <p class="card-text fw-bolder text-success fs-4">Main-Features:- </p>
         <p class="card-text text-secondary fw-bold">Chip-Set: ${phone.mainFeatures.chipSet}</p>
         <p class="card-text text-secondary fw-bold">Display-Size: ${phone.mainFeatures.displaySize}</p>
         <p class="card-text text-secondary fw-bold">Memory: ${phone.mainFeatures.memory}</p>
 
         <p class="card-text fw-bolder text-info fs-4">Sensors:- </p>
-        <p class="card-text text-secondary fw-bold">Chip-Set: ${phone.mainFeatures.sensors}</p>
+        <p class="card-text text-secondary fw-bold">Sensors: ${phone.mainFeatures.sensors}</p>
 
         <p class="card-text fw-bolder text-warning fs-4">Others:- </p>
         <p class="card-text text-secondary fw-bold ">Bluetooth: ${phone.others?.Bluetooth ? phone.others?.Bluetooth: '<span class="text-danger">Information Not Available</span>'}</p>

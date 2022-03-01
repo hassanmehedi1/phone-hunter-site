@@ -12,36 +12,39 @@
       <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-   <!-- Title  -->
-    <h2 class="text-center text-success">Phone Finder</h2>
-   <!-- phone search area -->
-   <div class="input-group mb-3 w-50 mx-auto">
-      <input id="search-field" type="text" class="form-control" placeholder="Search the phone you want"
-         aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button onclick="searchPhone()" class="btn btn-outline-secondary bg-primary text-white fw-bold" type="button" id="button-search">Search</button>
-   </div>
-
-   <!-- error message  -->
-   <div>
-      <p id="error-message" class=" text-danger text-center fs-2 fw-bold">Something went wrong please try again!</p>
+   <section class="container">
+      <!-- Title  -->
+      <h2 class="text-center text-success fs-1">Phone Finder</h2>
+      <!-- phone search area -->
+      <div class="input-group mb-3 w-50 mx-auto">
+         <input id="search-field" type="text" class="form-control" placeholder="Search the phone you want"
+            aria-label="Recipient's username" aria-describedby="button-addon2">
+         <button onclick="searchPhone()" class="btn btn-outline-secondary bg-primary text-white fw-bold" type="button"
+            id="button-search">Search</button>
+      </div>
       
-   </div>
-
-   <!-- Spinner  -->
-   <div class="spinner-border text-primary d-flex justify-content-center mx-auto" role="status" id="spinner">
-      <span class="visually-hidden">Loading...</span>
-   </div>
-
-   <!-- single meal details -->
-   <div id="phone-details" class="h-100 w-50 mx-auto mb-3">
-
-   </div>
-
-   <!-- phone search result -->
-   <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- error message  -->
+      <div>
+         <p id="error-message" class=" text-danger text-center fs-2 fw-bold">Something went wrong please try again!</p>
+         
+      </div>
       
-
-   </div>
+      <!-- Spinner  -->
+      <div class="spinner-border text-primary d-flex justify-content-center mx-auto" role="status" id="spinner">
+         <span class="visually-hidden">Loading...</span>
+      </div>
+      
+      <!-- single meal details -->
+      <div id="phone-details" class="h-50 w-50 mx-auto mb-3 p-0">
+      
+      </div>
+      
+      <!-- phone search result -->
+      <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 p-0">
+      
+      
+      </div>
+   </section>
 
 
 
